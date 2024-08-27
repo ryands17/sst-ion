@@ -1,0 +1,35 @@
+{
+  "name": "test-sst",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "sst": "sst",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.637.0",
+    "@aws-sdk/client-ssm": "^3.637.0",
+    "sst": "3.0.70"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.143",
+    "@types/node": "22.5.0",
+    "husky": "9.1.5",
+    "lint-staged": "15.2.9",
+    "prettier": "3.3.3",
+    "typescript": "^5.5.4"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md}": [
+      "prettier --write"
+    ]
+  }
+}
