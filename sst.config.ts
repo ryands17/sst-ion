@@ -14,6 +14,16 @@ export default $config({
   },
   async run() {
     // globals defined here: https://sst.dev/docs/reference/global/#app
+    sst.Linkable.wrap(aws.ssm.Parameter, (param) => ({
+      properties: { name: param.name },
+      include: [
+        sst.aws.permission({
+          actions: ['ssm:GetParameter'],
+          resources: [param.arn],
+        }),
+      ],
+    }));
+
     $transform(sst.aws.Function, (args, _opts) => {
       args.runtime = 'nodejs20.x';
       args.architecture = 'arm64';
